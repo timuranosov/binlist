@@ -9,6 +9,56 @@ If it is unable to find such a card, it calls binlist api and saves the card dat
 
 ### How to run
 
+### Prerequisites
+
+In order to run this program, in PostgreSQL such scripts are to be executed:
+```bash
+CREATE DATABASE binlist;
+CREATE SCHEMA binlist;
+CREATE TABLE binlist.banks
+(
+bin_id integer primary key,
+name character varying(100) COLLATE pg_catalog."default",
+url character varying(100) COLLATE pg_catalog."default",
+phone character varying(20) COLLATE pg_catalog."default",
+city character varying(50) COLLATE pg_catalog."default"
+);
+
+
+CREATE TABLE binlist.card_lengths
+(
+bin_id integer primary key,
+length varchar(10),
+luhn boolean NOT NULL
+);
+
+CREATE TABLE binlist.cards
+(
+bin_id integer primary key,
+scheme character varying(20) COLLATE pg_catalog."default",
+card_type character varying(20) COLLATE pg_catalog."default",
+brand character varying(50) COLLATE pg_catalog."default",
+prepaid boolean NOT NULL
+);
+
+CREATE TABLE binlist.countries
+(
+bin_id integer primary key,
+country_numeric character varying(10) COLLATE pg_catalog."default",
+alpha2 character varying(10) COLLATE pg_catalog."default",
+name character varying(50) COLLATE pg_catalog."default",
+emoji character varying(10) COLLATE pg_catalog."default",
+currency character varying(5) COLLATE pg_catalog."default",
+latitude integer,
+longitude integer
+);
+```
+PostgreSQL connection URL:
+```bash
+jdbc:postgresql://localhost:5432/binlist?currentSchema=binlist
+```
+
+
 You need JDK8 or later, maven 3.2.5 or later, available port 8080 on your machine
 
 Command:
