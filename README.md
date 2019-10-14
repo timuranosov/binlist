@@ -1,6 +1,11 @@
 ### BinList Integration
 
-This program integrates with api
+This program integrates with api:
+```bash
+https://lookup.binlist.net
+```
+First of all, it tries to find the credit/debit card data in its own DB (PostgreSQL). 
+If it is unable to find such a card, it calls binlist api and saves the card data into db.
 
 ### How to run
 
