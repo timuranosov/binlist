@@ -58,6 +58,7 @@ PostgreSQL connection URL:
 jdbc:postgresql://localhost:5432/binlist?currentSchema=binlist
 ```
 
+### Running application
 
 You need JDK8 or later, maven 3.2.5 or later, available port 8080 on your machine
 
